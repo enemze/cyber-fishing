@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8gojmorwmst4"]
+
+[ext_resource type="Shader" uid="uid://cy3h76ldjx2s2" path="res://retro_pp_dragon1freak.gdshader" id="1_1pssk"]
+[ext_resource type="Script" uid="uid://c5gw3klixmhis" path="res://dialogic/styles/DefaultLayoutBase/default_layout_base.gd" id="1_ifsho"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1pssk"]
+shader = ExtResource("1_1pssk")
+shader_parameter/change_color_depth = true
+shader_parameter/target_color_depth = 4
+shader_parameter/dithering = true
+shader_parameter/scale_resolution = true
+shader_parameter/target_resolution_scale = 4
+shader_parameter/enable_recolor = false
+
+[node name="DefaultLayoutBase" type="CanvasLayer"]
+script = ExtResource("1_ifsho")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_1pssk")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ryuss0iawcdb"
+path="res://.godot/imported/Cave of Time Pt. 3_looped.ogg-6f8a37cf785a1e1e39a05811be40871b.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/sounds/Cave of Time Pt. 3_looped.ogg"
+dest_files=["res://.godot/imported/Cave of Time Pt. 3_looped.ogg-6f8a37cf785a1e1e39a05811be40871b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

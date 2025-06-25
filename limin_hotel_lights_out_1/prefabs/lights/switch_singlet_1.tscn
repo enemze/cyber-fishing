@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm8bxv2wq4y61"]
+
+[ext_resource type="Script" uid="uid://bt3dp64t60fn5" path="res://levels/switch_singlet_a.gd" id="1_1tojg"]
+[ext_resource type="AudioStream" uid="uid://dercoifp6scug" path="res://resources/sounds/button_flip_t2.ogg" id="2_d4vni"]
+[ext_resource type="PackedScene" uid="uid://ck1gq06nwj167" path="res://prefabs/light_switch_visual_a.tscn" id="3_ggi0t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qre4s"]
+size = Vector3(1, 3, 1)
+
+[node name="switch_a" type="Node3D" groups=["switch_type_a"]]
+script = ExtResource("1_1tojg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+stream = ExtResource("2_d4vni")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_qre4s")
+
+[node name="LightSwitchVisualA" parent="." instance=ExtResource("3_ggi0t")]
+transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, 0, 2.5, 0.4)

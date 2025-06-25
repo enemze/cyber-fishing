@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6ck2qcdy6ixv"
+path="res://.godot/imported/OFF OST_ -02- Silencio.ogg-310adb6c588260bb39976488608d98c7.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/sounds/OFF OST_ -02- Silencio.ogg"
+dest_files=["res://.godot/imported/OFF OST_ -02- Silencio.ogg-310adb6c588260bb39976488608d98c7.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,38 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://d37ptq51st1bi"]
+
+[ext_resource type="Shader" uid="uid://cvghmovuhou3l" path="res://menus/sky.gdshader" id="1_wakhv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyvkc"]
+shader = ExtResource("1_wakhv")
+shader_parameter/energy = 1.0
+shader_parameter/gamma = 1.0
+shader_parameter/scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_blend_power = 4.0
+shader_parameter/seamless_blend = 0.1
+
+[sub_resource type="Sky" id="Sky_ivewk"]
+sky_material = SubResource("ShaderMaterial_nyvkc")
+
+[resource]
+background_color = Color(0.160784, 0.160784, 0.160784, 1)
+background_energy_multiplier = 0.69
+sky = SubResource("Sky_ivewk")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 14.64
+tonemap_mode = 3
+tonemap_exposure = 1.1
+tonemap_white = 0.76
+glow_enabled = true
+glow_intensity = 1.06
+glow_strength = 0.94
+glow_blend_mode = 1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_density = 1.0
+fog_depth_curve = 0.094732
+fog_depth_begin = 2.0
+adjustment_enabled = true
+adjustment_brightness = 1.16
+adjustment_saturation = 1.26

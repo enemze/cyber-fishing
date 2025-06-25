@@ -1,0 +1,122 @@
+[gd_scene load_steps=15 format=4 uid="uid://5op57fbqv01b"]
+
+[ext_resource type="Texture2D" uid="uid://d1do6tk1x4na6" path="res://resources/vhs_shop/vhshop_Lights.jpg" id="1_gprpi"]
+[ext_resource type="AudioStream" uid="uid://bx13sjya6md2n" path="res://resources/sounds/freesound/454067__kyles__light-bulb-hum-buzz3.wav" id="2_0hqk2"]
+[ext_resource type="Script" uid="uid://48ffxu8octfv" path="res://prefabs/lights/flour_light_base_1.gd" id="2_ua2u4"]
+[ext_resource type="PackedScene" uid="uid://7pqgj7foh76b" path="res://prefabs/light_dust_1.tscn" id="4_xhp0v"]
+[ext_resource type="Texture2D" uid="uid://dbjtutkc08hya" path="res://resources/misc_textures/light_cone_a.png" id="5_sovth"]
+[ext_resource type="Texture2D" uid="uid://dvuafqliwbkdf" path="res://resources/misc_textures/light_box_a.png" id="6_rsst0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6y0r"]
+resource_name = "Lights"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_gprpi")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ff0o3"]
+_surfaces = [{
+"aabb": AABB(-0.931045, -0.0209735, -0.526789, 1.86209, 0.141606, 1.05359),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQA"),
+"name": "Lights",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAP///v8AAAAAAAAAAAAAAAD//wAAAAD//wAA/v8AAP/////+/wAA//8AAAAAAAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ks5vb"]
+resource_name = "vhshop_Cube_289"
+_surfaces = [{
+"aabb": AABB(-0.931045, -0.0209735, -0.526789, 1.86209, 0.141606, 1.05359),
+"attribute_data": PackedByteArray("hpuK+6p///+qf4r7hpu+9ap/vvUi5Ir7qn8ZfKp/ivsi5L71qn++9f7////+/4r7hpuK+/7/vvWGm771//8ZfP7/ivsi5Ir7/v++9SLkvvU="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAAIAAMAAAAFAAgABwASAAkABwAQABIAEQAOABMAEQAMAA4ACwAEAA0ACwACAAQABgAKAA8ABgABAAoA"),
+"material": SubResource("StandardMaterial3D_v6y0r"),
+"name": "Lights",
+"primitive": 3,
+"uv_scale": Vector4(2.00523, 2.0628, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAAAA/v//PwAAAAD+//9/AAD///7/AAAAAP///v//fwAAAAAAAAAAAAAAAAAA/z8AAAAAAAAAAAAA//8AAAAAAAD//wAAAAD//wAA/v//P///AAD+//9///8AAP7//7///////v//f//////+//+///8AAAAA/z///wAAAAAAAP//AAAAAP+//////wAAAAD/////AAD/v/8//38AAP9//3////8//3//f////z//fwAA/3////9//z//f////38AAP9//3////9/AAD/f////38AAAAA/3////9//38AAP///3//fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ff0o3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsst0"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0.796078, 0.27451)
+albedo_texture = ExtResource("5_sovth")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_tu8ml"]
+material = SubResource("StandardMaterial3D_rsst0")
+size = Vector2(2, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu8ml"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0.819608, 0.27451)
+albedo_texture = ExtResource("6_rsst0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_m8ow3"]
+material = SubResource("StandardMaterial3D_tu8ml")
+size = Vector2(1.755, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8s35v"]
+material = SubResource("StandardMaterial3D_tu8ml")
+size = Vector2(0.885, 1)
+
+[node name="flour_light_base_1" type="MeshInstance3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_ks5vb")
+skeleton = NodePath("")
+script = ExtResource("2_ua2u4")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+light_color = Color(0.85098, 0.819608, 0.694118, 1)
+light_energy = 2.0
+light_specular = 0.0
+omni_range = 7.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+stream = ExtResource("2_0hqk2")
+volume_db = -5.0
+unit_size = 5.0
+autoplay = true
+max_distance = 5.0
+
+[node name="LightDust1" parent="." instance=ExtResource("4_xhp0v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51975, 0)
+visible = false
+mesh = SubResource("QuadMesh_tu8ml")
+
+[node name="light_grad" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="light_grad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5144, 0.424912)
+mesh = SubResource("QuadMesh_m8ow3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="light_grad"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.5144, -0.435044)
+mesh = SubResource("QuadMesh_m8ow3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="light_grad"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.878136, -0.5144, -0.00500582)
+mesh = SubResource("QuadMesh_8s35v")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="light_grad"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.868591, -0.5144, -0.00500582)
+mesh = SubResource("QuadMesh_8s35v")

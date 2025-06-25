@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://6iopxapyhm4d"]
+
+[ext_resource type="PackedScene" uid="uid://df6h0nv2hnbwi" path="res://resources/3Denemy/amebas/simple ameba.glb" id="1_w5t1a"]
+[ext_resource type="Shader" uid="uid://cmfvymigxjndq" path="res://resources/3Denemy/amebas/simple_ameba-purple.gdshader" id="2_w5t1a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi0pu"]
+albedo_color = Color(0.167978, 0.351725, 1, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0, 0.41623, 0.705311, 1)
+emission_energy_multiplier = 1.76
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o36de"]
+render_priority = 0
+shader = ExtResource("2_w5t1a")
+shader_parameter/level = 1.0
+shader_parameter/emission_intensity = 0.0
+shader_parameter/fresnel_color = Color(1.49205e-06, 0.762981, 0.289791, 1)
+shader_parameter/fresnel_intensity = 2.528
+shader_parameter/fresnel_power = 1.384
+shader_parameter/rim_color = Color(0.534058, 0.720929, 0, 1)
+shader_parameter/rim_size = 0.8
+shader_parameter/rim_intensity = 0.381
+shader_parameter/rim_start = 0.865
+shader_parameter/rim_end = -1.0
+
+[node name="simple ameba" instance=ExtResource("1_w5t1a")]
+
+[node name="GeneralSkeleton" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0, -2.0268e-08, 0.15085, 0.988557)
+bones/1/position = Vector3(-8.88564e-08, 3.65191, 2.73124e-07)
+bones/1/rotation = Quaternion(0.950225, 0.0368854, 0.30914, -0.0120002)
+
+[node name="Sphere_001" parent="Armature/GeneralSkeleton" index="0"]
+material_override = SubResource("StandardMaterial3D_bi0pu")
+material_overlay = SubResource("ShaderMaterial_o36de")
+blend_shapes/Displace.002 = 0.962874
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "ArmatureAction"
+speed_scale = 1.733

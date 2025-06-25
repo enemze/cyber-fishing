@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bphn08jc6y3gj"
+path.s3tc="res://.godot/imported/free_modular_air_duct_kit_1.png-136b1b1a35f1bfe67c6e999f5e8cce85.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d442ed051e4b96960351501e9bbbac00"
+}
+
+[deps]
+
+source_file="res://resources/3Denemy/ducts/free_modular_air_duct_kit_1.png"
+dest_files=["res://.godot/imported/free_modular_air_duct_kit_1.png-136b1b1a35f1bfe67c6e999f5e8cce85.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://resources/3Denemy/ducts/free_modular_air_duct_kit_2.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

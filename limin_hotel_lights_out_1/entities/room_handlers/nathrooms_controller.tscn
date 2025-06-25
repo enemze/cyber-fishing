@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmrvhiwmdq0lt"]
+
+[ext_resource type="Script" uid="uid://pl637yuxnawm" path="res://entities/room_handlers/nathrooms_controller.gd" id="1_ec6jq"]
+
+[node name="NathroomsController" type="Node3D" groups=["switch_type_a"]]
+script = ExtResource("1_ec6jq")

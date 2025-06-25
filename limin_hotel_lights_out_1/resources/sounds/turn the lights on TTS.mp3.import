@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bt3bvyumf6ryw"
+path="res://.godot/imported/turn the lights on TTS.mp3-1748bb52586e63966e3a1f53f645c974.mp3str"
+
+[deps]
+
+source_file="res://resources/sounds/turn the lights on TTS.mp3"
+dest_files=["res://.godot/imported/turn the lights on TTS.mp3-1748bb52586e63966e3a1f53f645c974.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

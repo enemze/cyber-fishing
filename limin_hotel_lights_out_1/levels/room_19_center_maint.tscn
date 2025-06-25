@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://bri7x6kundnsl"]
+
+[ext_resource type="PackedScene" uid="uid://hrxiwht2c7jf" path="res://prefabs/components/wall_prefab_WB_a.tscn" id="1_qwytp"]
+[ext_resource type="PackedScene" uid="uid://dypp53wnu3vq4" path="res://entities/wall_door_full_1.tscn" id="2_m8oeo"]
+[ext_resource type="PackedScene" uid="uid://rjqbpc7tcslr" path="res://entities/wall_door_one_way_1.tscn" id="3_aaid1"]
+[ext_resource type="PackedScene" uid="uid://di2qb821ilfuc" path="res://resources/3Denemy/lim_hotel_kit/prefabs/wall_maint_5.tscn" id="4_aaid1"]
+[ext_resource type="Texture2D" uid="uid://dgtkqdkb8f72m" path="res://resources/retrohorror_textures/Concrete/Concrete_6/0/T_Concrete_6_0_BaseColor.png" id="5_3drkv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nujxp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aaid1"]
+specular_mode = 2
+albedo_color = Color(0.60933, 0.60933, 0.60933, 1)
+albedo_texture = ExtResource("5_3drkv")
+uv1_scale = Vector3(7.5, 7.5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3drkv"]
+specular_mode = 2
+albedo_color = Color(0.60933, 0.60933, 0.60933, 1)
+albedo_texture = ExtResource("5_3drkv")
+uv1_scale = Vector3(2, 2, 20)
+
+[node name="room_19_center_maint" type="Node3D"]
+
+[node name="WallDoorFull1" parent="." instance=ExtResource("2_m8oeo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.975, 0.5, -7)
+
+[node name="WallDoorOneWay" parent="." instance=ExtResource("3_aaid1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.896, 0.597, -0.992)
+
+[node name="floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.55671e-07, 0, 28, 0, 1, 0, -15, 0, -1.22392e-06, 0.972674, 0.1, 0.8)
+mesh = SubResource("BoxMesh_nujxp")
+surface_material_override/0 = SubResource("StandardMaterial3D_aaid1")
+
+[node name="floor3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 1, 0, -5, 0, -2.18557e-07, 12.9727, 0.1, -9.2)
+mesh = SubResource("BoxMesh_nujxp")
+surface_material_override/0 = SubResource("StandardMaterial3D_3drkv")
+
+[node name="colliders" type="Node3D" parent="."]
+visible = false
+
+[node name="StaticBody3D" parent="colliders" instance=ExtResource("1_qwytp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 12.5, 2, -9.5)
+
+[node name="StaticBody3D6" parent="colliders" instance=ExtResource("1_qwytp")]
+transform = Transform3D(19, 0, 0, 0, 5, 0, 0, 0, 1, 0.6, 2, 1)
+
+[node name="StaticBody3D4" parent="colliders" instance=ExtResource("1_qwytp")]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 11, 10.5, 2, -4)
+
+[node name="StaticBody3D2" parent="colliders" instance=ExtResource("1_qwytp")]
+transform = Transform3D(28, 0, 0, 0, 5, 0, 0, 0, 1, 1.09728, 2, 5)
+
+[node name="StaticBody3D5" parent="colliders" instance=ExtResource("1_qwytp")]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 4, -8.4, 2, -1)
+
+[node name="StaticBody3D3" parent="colliders" instance=ExtResource("1_qwytp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, -10.4, 2, -3)
+
+[node name="skin" type="Node3D" parent="."]
+
+[node name="wallmaint5" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.98054, 0.587353, 1.41629)
+
+[node name="wallmaint6" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98054, 0.587353, 1.41629)
+
+[node name="wallmaint7" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01946, 0.587353, 1.41629)
+
+[node name="wallmaint8" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.01946, 0.587353, 1.41629)
+
+[node name="wallmaint9" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.01947, 0.587353, 1.41629)
+
+[node name="wallmaint12" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.9805, 0.587353, 4.41629)
+
+[node name="wallmaint13" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98054, 0.587353, 4.41629)
+
+[node name="wallmaint14" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98054, 0.587353, 4.41629)
+
+[node name="wallmaint17" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.01946, 0.587353, 4.41629)
+
+[node name="wallmaint18" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0195, 0.587353, 4.41629)
+
+[node name="wallmaint19" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.9022, 0.587353, 4.41629)
+
+[node name="wallmaint20" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.9022, 0.587353, 0.416292)
+
+[node name="wallmaint25" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.9022, 0.587353, -3.58371)
+
+[node name="wallmaint21" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.9152, 0.587353, -0.488533)
+
+[node name="wallmaint22" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.9152, 0.587353, -4.48853)
+
+[node name="wallmaint23" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.9152, 0.587353, -8.48853)
+
+[node name="wallmaint24" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.9152, 0.587353, -9.08835)
+
+[node name="wallmaint15" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.01946, 0.587353, 4.41629)
+
+[node name="wallmaint16" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.01947, 0.587353, 4.41629)
+
+[node name="wallmaint10" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -8.88041, 0.587353, -0.48042)
+
+[node name="wallmaint11" parent="skin" instance=ExtResource("4_aaid1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.8804, 0.587353, -2.48042)

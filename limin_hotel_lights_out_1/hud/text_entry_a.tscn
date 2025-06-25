@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwnoxsr8gim04"]
+
+[ext_resource type="Script" uid="uid://dv606ryow3umg" path="res://hud/line_edit.gd" id="1_60vol"]
+
+[node name="TextEntryA" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_60vol")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.259
+anchor_top = -0.628
+anchor_right = 0.753
+anchor_bottom = -0.017
+offset_left = 0.119995
+offset_top = 0.0400009
+offset_right = 0.0399933
+offset_bottom = 0.0600002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+wrap_mode = 1
+caret_type = 1
+caret_blink = true

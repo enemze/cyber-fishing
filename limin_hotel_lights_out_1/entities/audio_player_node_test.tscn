@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwb84fonsivuc"]
+
+[ext_resource type="AudioStream" uid="uid://c6ck2qcdy6ixv" path="res://resources/sounds/OFF OST_ -02- Silencio.ogg" id="1_0kc1p"]
+[ext_resource type="Script" uid="uid://823u5cva0ry4" path="res://entities/audio_player_node_test.gd" id="1_6i3fm"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_51m7b"]
+top_radius = 0.01
+bottom_radius = 0.2
+
+[node name="AudioPlayerNodeTest" type="Node3D"]
+script = ExtResource("1_6i3fm")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_0kc1p")
+max_distance = 10.0
+bus = &"low_pass"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -5)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0, -1)
+visible = false
+mesh = SubResource("CylinderMesh_51m7b")

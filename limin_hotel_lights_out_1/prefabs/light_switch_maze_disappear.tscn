@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dffw6gqx3f1a4"]
+
+[ext_resource type="Texture2D" uid="uid://cgeqmg3lhn1i2" path="res://resources/misc_textures/light_switch.png" id="1_h47fv"]
+[ext_resource type="Script" uid="uid://m6w77h52qesf" path="res://prefabs/light_switch_maze_disappear.gd" id="1_rf1qb"]
+[ext_resource type="AudioStream" uid="uid://dercoifp6scug" path="res://resources/sounds/button_flip_t2.ogg" id="2_x5q38"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3r5a"]
+shading_mode = 0
+albedo_texture = ExtResource("1_h47fv")
+uv1_scale = Vector3(3.08, 2, 3.005)
+uv1_offset = Vector3(-0.04, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nvmfm"]
+material = SubResource("StandardMaterial3D_m3r5a")
+size = Vector3(0.6, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xt5v2"]
+size = Vector3(10, 6, 1)
+
+[node name="LightSwitchMaze_D" type="Node3D" groups=["if_touch_vanish"]]
+script = ExtResource("1_rf1qb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_nvmfm")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_xt5v2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_x5q38")

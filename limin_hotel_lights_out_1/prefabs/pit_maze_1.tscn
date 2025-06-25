@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvvm2xrvlhqt6"]
+
+[ext_resource type="Texture2D" uid="uid://b4x1u6aov7thn" path="res://resources/misc_textures/pit_hands.png" id="1_reoqp"]
+[ext_resource type="Script" uid="uid://6tab2j4afgv" path="res://prefabs/pit_maze_1.gd" id="1_u2k6f"]
+[ext_resource type="AudioStream" uid="uid://drxyfyk318lj2" path="res://resources/sounds/cloudya/Menu_Click_OFF_-_LSD_edit.wav" id="3_f1bx7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4duy"]
+shading_mode = 0
+albedo_texture = ExtResource("1_reoqp")
+uv1_scale = Vector3(1, 0.645, 1)
+uv1_offset = Vector3(0, 0.35, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vucks"]
+material = SubResource("StandardMaterial3D_v4duy")
+size = Vector2(2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4ciq"]
+shading_mode = 0
+albedo_texture = ExtResource("1_reoqp")
+uv1_scale = Vector3(1, 0.75, 1)
+uv1_offset = Vector3(0, 0.25, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_b7b8g"]
+material = SubResource("StandardMaterial3D_d4ciq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6cno"]
+size = Vector3(2.25, 3, 1.25)
+
+[node name="pit_maze_1" type="Node3D" groups=["maze_pit"]]
+script = ExtResource("1_u2k6f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("QuadMesh_vucks")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
+mesh = SubResource("QuadMesh_vucks")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0)
+mesh = SubResource("QuadMesh_b7b8g")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -1, 0, 0)
+mesh = SubResource("QuadMesh_b7b8g")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f1bx7")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_g6cno")

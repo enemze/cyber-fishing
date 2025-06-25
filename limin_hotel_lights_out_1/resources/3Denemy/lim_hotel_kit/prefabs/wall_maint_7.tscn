@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://3m5lvwie3160"]
+
+[ext_resource type="Texture2D" uid="uid://dxurhfmiahqh4" path="res://resources/3Denemy/lim_hotel_kit/lim_hotel_kit (1)_T_Wall_4_0_BaseColor.png" id="1_mooki"]
+[ext_resource type="Texture2D" uid="uid://c0khgsgd72thy" path="res://resources/3Denemy/lim_hotel_kit/lim_hotel_kit (1)_T_Wall_1_0_BaseColor.png" id="2_3x7ls"]
+[ext_resource type="Texture2D" uid="uid://cuvc00dbnv3ms" path="res://resources/retrohorror_textures/Concrete/Concrete_5/2/T_Concrete_5_2_BaseColor.png" id="3_mooki"]
+[ext_resource type="Texture2D" uid="uid://dki1vx82rijs4" path="res://resources/retrohorror_textures/Concrete/Concrete_5/5/T_Concrete_5_5_BaseColor.png" id="4_mooki"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6rhw"]
+resource_name = "interior wall"
+cull_mode = 2
+albedo_texture = ExtResource("1_mooki")
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv257"]
+resource_name = "exteriror wall"
+cull_mode = 2
+albedo_texture = ExtResource("2_3x7ls")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ik57d"]
+_surfaces = [{
+"aabb": AABB(0, 0, -4.76837e-07, 2.00001, 2, 1.07153e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"name": "interior wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 22, 17, 0, 0, 254, 255, 255, 255, 22, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(0, 0, 0.0999994, 2.00001, 2, 1.09524e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "exteriror wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 74, 22, 0, 0, 254, 255, 255, 255, 183, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jcp3f"]
+resource_name = "lim_hotel_kit (1)_Plane_084"
+_surfaces = [{
+"aabb": AABB(0, 0, -4.76837e-07, 2.00001, 2, 1.07153e-05),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_q6rhw"),
+"name": "interior wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 22, 17, 255, 255, 254, 255, 255, 255, 22, 17, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}, {
+"aabb": AABB(0, 0, 0.0999994, 2.00001, 2, 1.09524e-05),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_iv257"),
+"name": "exteriror wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 74, 22, 0, 0, 254, 255, 255, 255, 183, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ik57d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68kyp"]
+specular_mode = 2
+albedo_texture = ExtResource("3_mooki")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lccw"]
+specular_mode = 2
+albedo_texture = ExtResource("4_mooki")
+metallic_specular = 0.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xjwjv"]
+points = PackedVector3Array(0, 0, -4.76837e-07, 0, 0, 0.0999906, 0, 2, -4.76837e-07, 1.99998, 0, -4.76837e-07, 1.99998, 0, 0.0999906, 0, 2, 0.0999906, 1.99998, 2, -4.76837e-07, 1.99998, 2, 0.0999906)
+
+[node name="wallmaint7" type="Node3D"]
+
+[node name="Wall_020" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 0, -0.1)
+mesh = SubResource("ArrayMesh_jcp3f")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_68kyp")
+surface_material_override/1 = SubResource("StandardMaterial3D_3lccw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_xjwjv")

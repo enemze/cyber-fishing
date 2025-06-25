@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=4 uid="uid://dbtm258fbfny0"]
+
+[ext_resource type="Texture2D" uid="uid://d1do6tk1x4na6" path="res://resources/vhs_shop/vhshop_Lights.jpg" id="1_w3u7x"]
+[ext_resource type="AudioStream" uid="uid://bx13sjya6md2n" path="res://resources/sounds/freesound/454067__kyles__light-bulb-hum-buzz3.wav" id="2_b6jgq"]
+[ext_resource type="Script" uid="uid://c8vhape711jka" path="res://prefabs/lights/flicker_light_base_1.gd" id="2_jo6r6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6jgq"]
+resource_name = "Lights"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_w3u7x")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ff0o3"]
+_surfaces = [{
+"aabb": AABB(-0.931045, -0.0209735, -0.526789, 1.86209, 0.141606, 1.05359),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQA"),
+"name": "Lights",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAP///v8AAAAAAAAAAAAAAAD//wAAAAD//wAA/v8AAP/////+/wAA//8AAAAAAAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ks5vb"]
+resource_name = "vhshop_Cube_289"
+_surfaces = [{
+"aabb": AABB(-0.931045, -0.0209735, -0.526789, 1.86209, 0.141606, 1.05359),
+"attribute_data": PackedByteArray("hpuK+6p///+qf4r7hpu+9ap/vvUi5Ir7qn8ZfKp/ivsi5L71qn++9f7////+/4r7hpuK+/7/vvWGm771//8ZfP7/ivsi5Ir7/v++9SLkvvU="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAAIAAMAAAAFAAgABwASAAkABwAQABIAEQAOABMAEQAMAA4ACwAEAA0ACwACAAQABgAKAA8ABgABAAoA"),
+"material": SubResource("StandardMaterial3D_b6jgq"),
+"name": "Lights",
+"primitive": 3,
+"uv_scale": Vector4(2.00523, 2.0628, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAAAA/v//PwAAAAD+//9/AAD///7/AAAAAP///v//fwAAAAAAAAAAAAAAAAAA/z8AAAAAAAAAAAAA//8AAAAAAAD//wAAAAD//wAA/v//P///AAD+//9///8AAP7//7///////v//f//////+//+///8AAAAA/z///wAAAAAAAP//AAAAAP+//////wAAAAD/////AAD/v/8//38AAP9//3////8//3//f////z//fwAA/3////9//z//f////38AAP9//3////9/AAD/f////38AAAAA/3////9//38AAP///3//fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ff0o3")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b6jgq"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_jo6r6"]
+noise = SubResource("FastNoiseLite_b6jgq")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="flicker_light_base_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_ks5vb")
+skeleton = NodePath("")
+script = ExtResource("2_jo6r6")
+noise = SubResource("NoiseTexture3D_jo6r6")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="flicker_light_base_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+light_color = Color(0.85098, 0.819608, 0.694118, 1)
+light_energy = 2.0
+light_specular = 0.0
+omni_range = 7.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="flicker_light_base_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+stream = ExtResource("2_b6jgq")
+volume_db = -5.0
+unit_size = 5.0
+autoplay = true
+max_distance = 5.0
+
+[node name="Timer" type="Timer" parent="flicker_light_base_1"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="flicker_light_base_1/Timer" to="flicker_light_base_1" method="_on_timer_timeout"]

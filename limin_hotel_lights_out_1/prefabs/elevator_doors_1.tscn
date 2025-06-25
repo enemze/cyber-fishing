@@ -1,0 +1,177 @@
+[gd_scene load_steps=14 format=3 uid="uid://dc3q25550qe0u"]
+
+[ext_resource type="Texture2D" uid="uid://dua1d3ljlhnk2" path="res://resources/retrohorror_textures/Metal/Metal_4/3/T_Metal_4_3_BaseColor.png" id="1_h6n57"]
+[ext_resource type="AudioStream" uid="uid://mg6xafertkv2" path="res://resources/sounds/freesound/elevator_dingdong.ogg" id="1_kjf81"]
+[ext_resource type="Texture2D" uid="uid://rftfd7jv52lq" path="res://resources/industrial/Industrial_exterior_v2_Metal_cabinet_2.png" id="1_mo8da"]
+[ext_resource type="AudioStream" uid="uid://b4067yntvhiht" path="res://resources/sounds/freesound/658261__krokulator__select4.wav" id="4_qonqp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qonqp"]
+albedo_texture = ExtResource("1_h6n57")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqg28"]
+albedo_texture = ExtResource("1_mo8da")
+albedo_texture_force_srgb = true
+metallic = 0.66
+metallic_specular = 0.0
+roughness = 0.9
+uv1_scale = Vector3(0.88, 1.85, 1.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ow5jq"]
+material = SubResource("StandardMaterial3D_lqg28")
+size = Vector3(2, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0jm0"]
+size = Vector3(2, 3, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4jt7"]
+albedo_texture = ExtResource("1_h6n57")
+
+[sub_resource type="Animation" id="Animation_mnnxg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ooxc8"]
+resource_name = "close"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.333333, 0.466667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.5, 1, 0), Vector3(-2.45, 1, 0), Vector3(-2.5, 1, 0), Vector3(-1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.333333, 0.466667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.5, 1, 0), Vector3(2.45, 1, 0), Vector3(2.5, 1, 0), Vector3(1, 1, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_kjf81")
+}],
+"times": PackedFloat32Array(0.966667)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_i61x6"]
+resource_name = "open"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1.43333, 1.53333, 1.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1, 1, 0), Vector3(-2.5, 1, 0), Vector3(-2.45, 1, 0), Vector3(-2.5, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.43333, 1.53333, 1.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 0), Vector3(2.5, 1, 0), Vector3(2.45, 1, 0), Vector3(2.5, 1, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_qonqp")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qksip"]
+_data = {
+&"RESET": SubResource("Animation_mnnxg"),
+&"close": SubResource("Animation_ooxc8"),
+&"open": SubResource("Animation_i61x6")
+}
+
+[node name="ElevatorDoors1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+material_override = SubResource("StandardMaterial3D_qonqp")
+mesh = SubResource("BoxMesh_ow5jq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_d0jm0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+material_override = SubResource("StandardMaterial3D_s4jt7")
+mesh = SubResource("BoxMesh_ow5jq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_d0jm0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qksip")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -8.0

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3jy2c3wano6v"]
+
+[ext_resource type="PackedScene" uid="uid://b0i56gcfr1gqk" path="res://resources/3Denemy/boxes/WoodenBox.glb" id="1_ekstw"]
+
+[node name="WoodenBox" instance=ExtResource("1_ekstw")]

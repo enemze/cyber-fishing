@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b01p6pitealhd"]
+
+[ext_resource type="Script" uid="uid://lrlnbdynhtr" path="res://player/camera_tps.gd" id="1_xsgpi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_l2gq3"]
+
+[node name="CameraTps" type="Node3D" node_paths=PackedStringArray("camera_target")]
+script = ExtResource("1_xsgpi")
+camera_target = NodePath("Camera Target")
+
+[node name="Camera Target" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera Target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0291009)
+far = 140.0
+
+[node name="Label3D" type="Label3D" parent="Camera Target/Camera3D"]
+transform = Transform3D(0.786978, 0.202742, -0.58272, -0.0111946, 0.949005, 0.315062, 0.61688, -0.241423, 0.749115, 0.224605, 0.261242, -1.82817)
+text = "if there were two guys on the moon and one "
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 2
+width = 200.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera Target/Camera3D/Label3D"]
+transform = Transform3D(1, -7.45058e-08, 8.9407e-08, -2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 4.47035e-08, 1, 0.441355, -0.565758, -0.0165385)
+mesh = SubResource("QuadMesh_l2gq3")

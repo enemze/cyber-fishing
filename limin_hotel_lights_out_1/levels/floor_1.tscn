@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://cy3ii3ld2dm1f"]
+
+[ext_resource type="Texture2D" uid="uid://dxe8ftrqvkxdp" path="res://resources/misc_textures/carp_texture_2.png" id="1_yc3rg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1rit"]
+size = Vector3(37.2139, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sk3i6"]
+size = Vector3(23.5238, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lsq3"]
+size = Vector3(46.025, 1, 32.3341)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1nt0"]
+size = Vector3(27.482, 1, 58.7268)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nt3ef"]
+specular_mode = 2
+albedo_texture = ExtResource("1_yc3rg")
+albedo_texture_force_srgb = true
+metallic_specular = 0.0
+uv1_scale = Vector3(200, 200, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u6jqk"]
+material = SubResource("StandardMaterial3D_nt3ef")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqf20"]
+specular_mode = 2
+albedo_texture = ExtResource("1_yc3rg")
+albedo_texture_force_srgb = true
+metallic_specular = 0.0
+uv1_scale = Vector3(161.03, 161.03, 161.03)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sk3i6"]
+material = SubResource("StandardMaterial3D_wqf20")
+size = Vector3(100, 1, 100)
+
+[node name="floor" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 0)
+visible = false
+shape = SubResource("BoxShape3D_f1rit")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, 0, 0)
+visible = false
+shape = SubResource("BoxShape3D_f1rit")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154924, 0, 42)
+visible = false
+shape = SubResource("BoxShape3D_sk3i6")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1549, 0, 42)
+visible = false
+shape = SubResource("BoxShape3D_sk3i6")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4056, 0, -34.1671)
+visible = false
+shape = SubResource("BoxShape3D_5lsq3")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7409, 0, 4.48178)
+visible = false
+shape = SubResource("BoxShape3D_f1nt0")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.8432, 0, 3.88084)
+visible = false
+shape = SubResource("BoxShape3D_f1nt0")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+visible = false
+shape = SubResource("BoxShape3D_f1rit")
+debug_color = Color(0.999851, 0.249568, 0.28035, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 0)
+mesh = SubResource("BoxMesh_u6jqk")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.437, -0.001, -67.865)
+mesh = SubResource("BoxMesh_u6jqk")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.795, -0.002, 43)
+mesh = SubResource("BoxMesh_u6jqk")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 39.744, -0.003, 43)
+mesh = SubResource("BoxMesh_sk3i6")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.545, 35.72, -0.004, 5.903)
+mesh = SubResource("BoxMesh_sk3i6")

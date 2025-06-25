@@ -1,0 +1,138 @@
+[gd_scene load_steps=13 format=3 uid="uid://c67wca2xk8ph2"]
+
+[ext_resource type="Script" uid="uid://db2xqhl3gaij3" path="res://menus/options_pause_menu.gd" id="1_j6x3b"]
+[ext_resource type="PackedScene" uid="uid://bto16u6qqcncj" path="res://menus/audioslidersettings.tscn" id="2_e1c06"]
+[ext_resource type="Texture2D" uid="uid://4vdsjmrqkxt" path="res://resources/misc_textures/eyes_close_1.png" id="3_e1c06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrpvw"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(0, 0, 596, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh2n1"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(596, 0, 596, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcx5p"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(1192, 0, 596, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4sah"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(1788, 0, 596, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs2w5"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(2384, 0, 596, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4va31"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(2980, 0, 596, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtl84"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(3576, 0, 596, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiqfg"]
+atlas = ExtResource("3_e1c06")
+region = Rect2(4172, 0, 596, 336)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wrsbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrpvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh2n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcx5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4sah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs2w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4va31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtl84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiqfg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="options_pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_j6x3b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.541176, 0.392157, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="audioslidersettings" parent="MarginContainer/VBoxContainer/ScrollContainer" instance=ExtResource("2_e1c06")]
+layout_mode = 2
+
+[node name="fullscreen" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 48
+text = "fullscreen
+"
+
+[node name="back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 48
+text = "back"
+
+[node name="blink_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(643, 362)
+scale = Vector2(2.1745, 2.17857)
+sprite_frames = SubResource("SpriteFrames_wrsbr")

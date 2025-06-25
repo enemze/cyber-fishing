@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsew4twmchkva"]
+
+[ext_resource type="Texture2D" uid="uid://d3iuwvvlrlcii" path="res://resources/retrohorror_textures/Wall/Wall_2/0/T_Wall_2_0_BaseColor.png" id="1_t33up"]
+[ext_resource type="Texture2D" uid="uid://dpi3gbss2ghgi" path="res://resources/3Denemy/lim_hotel_kit/lim_hotel_kit (1)_T_Concrete_6_0_BaseColor.png" id="2_31olj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpg8r"]
+resource_name = "interior wall"
+cull_mode = 2
+albedo_texture = ExtResource("1_t33up")
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xo46"]
+resource_name = "exteriror wall"
+cull_mode = 2
+albedo_texture = ExtResource("2_31olj")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ubl5d"]
+_surfaces = [{
+"aabb": AABB(0, 0, -2, 1e-05, 2, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "interior wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0)
+}, {
+"aabb": AABB(0.0999999, 0, -2, 9.99868e-06, 2.00001, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(1, 0, 3, 0, 0, 0, 1, 0, 2, 0, 3, 0),
+"name": "exteriror wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ya712"]
+resource_name = "lim_hotel_kit (1)_Plane_013"
+_surfaces = [{
+"aabb": AABB(0, 0, -2, 1e-05, 2, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_xpg8r"),
+"name": "interior wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 0, 0, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}, {
+"aabb": AABB(0.0999999, 0, -2, 9.99868e-06, 2.00001, 2),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(1, 0, 3, 0, 0, 0, 1, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_5xo46"),
+"name": "exteriror wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ubl5d")
+
+[node name="Bathroomwalls" type="Node3D"]
+
+[node name="Wall_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+mesh = SubResource("ArrayMesh_ya712")
+skeleton = NodePath("")

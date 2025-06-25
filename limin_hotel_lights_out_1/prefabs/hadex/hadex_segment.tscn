@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmh7ix5tmmh1u"]
+
+[ext_resource type="PackedScene" uid="uid://wyi8woonrkcm" path="res://prefabs/hadex/hadex_animator.tscn" id="1_8isst"]
+[ext_resource type="PackedScene" uid="uid://4udpdpilt34s" path="res://prefabs/hadex/hadex_animator_flip.tscn" id="2_aa0iv"]
+
+[node name="HadexSegment" type="Node3D"]
+
+[node name="HadexAnimator" parent="." instance=ExtResource("1_8isst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="HadexAnimator2" parent="." instance=ExtResource("1_8isst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="HadexAnimator3" parent="." instance=ExtResource("1_8isst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.55, 0)
+
+[node name="HadexAnimatorFlip" parent="." instance=ExtResource("2_aa0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.55, 0)

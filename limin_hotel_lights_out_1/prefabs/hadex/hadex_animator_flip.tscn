@@ -1,0 +1,230 @@
+[gd_scene load_steps=23 format=3 uid="uid://4udpdpilt34s"]
+
+[ext_resource type="Texture2D" uid="uid://cgkahri8sqccd" path="res://prefabs/hadex/shadow_test_1_b-Sheet.png" id="1_e1suk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf1a8"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5hq5"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihxei"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgjpu"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6qo0"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkj84"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(2000, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8x55"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(2400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyxkj"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(2800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7hvr"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(3200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpaia"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(3600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aom4b"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(4000, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oens"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(4400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1ret"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(4800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twi6h"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(5200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b1q1"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(5600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky2ri"]
+atlas = ExtResource("1_e1suk")
+region = Rect2(6000, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qj3qc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf1a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5hq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihxei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgjpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6qo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkj84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8x55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyxkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7hvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpaia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aom4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oens")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1ret")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twi6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b1q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky2ri")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_bsc30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cjfox"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.06667, 1.2, 2),
+"transitions": PackedFloat32Array(1, 0.450625, 1.46408, 1.46408, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1.5, 1, 1.5), Vector3(1.5, 1, 1.5), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5lkp0"]
+resource_name = "sway"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(4.14107, 4.43828, 3.03144),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxe8v"]
+_data = {
+&"RESET": SubResource("Animation_bsc30"),
+&"pulse": SubResource("Animation_cjfox"),
+&"sway": SubResource("Animation_5lkp0")
+}
+
+[node name="HadexAnimatorFlip" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0, -1)
+flip_h = true
+modulate = Color(0, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_qj3qc")
+autoplay = "default"
+frame_progress = 0.851087
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 1, 0, 1)
+flip_h = true
+modulate = Color(0, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_qj3qc")
+autoplay = "default"
+frame_progress = 0.776224
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -1, 0, 1)
+flip_h = true
+modulate = Color(0, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_qj3qc")
+autoplay = "default"
+frame_progress = 0.776224
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, -1, 0, -1)
+flip_h = true
+modulate = Color(0, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_qj3qc")
+autoplay = "default"
+frame_progress = 0.776224
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gxe8v")
+}

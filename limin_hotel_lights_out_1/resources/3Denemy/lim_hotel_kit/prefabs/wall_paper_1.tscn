@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://btuvpbsfva1a4"]
+
+[ext_resource type="Texture2D" uid="uid://dpi3gbss2ghgi" path="res://resources/3Denemy/lim_hotel_kit/lim_hotel_kit (1)_T_Concrete_6_0_BaseColor.png" id="1_sc5nr"]
+[ext_resource type="Texture2D" uid="uid://t11joox7ujqf" path="res://resources/retrohorror_textures/Wall/Wall_1/0/T_Wall_1_0_BaseColor.png" id="2_eduqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv257"]
+resource_name = "exteriror wall"
+cull_mode = 2
+albedo_texture = ExtResource("1_sc5nr")
+metallic_specular = 0.0
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8kyi"]
+resource_name = "interior wall 3"
+cull_mode = 2
+albedo_texture = ExtResource("2_eduqv")
+metallic_specular = 0.0
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hbpcn"]
+_surfaces = [{
+"aabb": AABB(0, 5.96046e-08, 0.0999994, 2.00001, 2, 1.07139e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "exteriror wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 23, 17, 0, 0, 254, 255, 255, 255, 100, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(0, 5.96046e-08, -4.76837e-07, 2.00001, 2, 1.04768e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"name": "interior wall 3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 166, 11, 0, 0, 254, 255, 255, 255, 166, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cm3b6"]
+resource_name = "lim_hotel_kit (1)_Plane_080"
+_surfaces = [{
+"aabb": AABB(0, 5.96046e-08, 0.0999994, 2.00001, 2, 1.07139e-05),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_iv257"),
+"name": "exteriror wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 23, 17, 0, 0, 254, 255, 255, 255, 100, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127)
+}, {
+"aabb": AABB(0, 5.96046e-08, -4.76837e-07, 2.00001, 2, 1.04768e-05),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_x8kyi"),
+"name": "interior wall 3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 166, 11, 255, 255, 254, 255, 255, 255, 166, 11, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hbpcn")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xhxvl"]
+points = PackedVector3Array(0, 5.96046e-08, -4.76837e-07, 0, 5.96046e-08, 0.0999904, 0, 2, -4.76837e-07, 1.99998, 5.96046e-08, -4.76837e-07, 1.99998, 5.96046e-08, 0.1, 0, 2, 0.0999904, 1.99998, 2, -4.76837e-07, 1.99998, 2, 0.0999904)
+
+[node name="WallPaper1" type="Node3D"]
+
+[node name="Wall_016" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 0, -0.1)
+mesh = SubResource("ArrayMesh_cm3b6")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 0, -0.1)
+shape = SubResource("ConvexPolygonShape3D_xhxvl")

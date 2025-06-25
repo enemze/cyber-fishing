@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw31ijem32gci"]
+
+[ext_resource type="Script" uid="uid://bc2028pg2gnc" path="res://entities/lights/light_key_in_room.gd" id="1_lf67e"]
+[ext_resource type="AudioStream" uid="uid://dercoifp6scug" path="res://resources/sounds/button_flip_t2.ogg" id="2_btjhe"]
+[ext_resource type="Texture2D" uid="uid://cgeqmg3lhn1i2" path="res://resources/misc_textures/light_switch.png" id="3_i47nt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qre4s"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3r5a"]
+shading_mode = 0
+albedo_texture = ExtResource("3_i47nt")
+uv1_scale = Vector3(3.08, 2, 3.005)
+uv1_offset = Vector3(-0.04, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k8tws"]
+material = SubResource("StandardMaterial3D_m3r5a")
+size = Vector3(0.6, 1, 0.25)
+
+[node name="LightKeyInRoom" type="Node3D" groups=["switch_type_a"]]
+script = ExtResource("1_lf67e")
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="reveals" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_btjhe")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_qre4s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.6)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_k8tws")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://doiq4pdi6mr5k"]
+
+[ext_resource type="Script" uid="uid://cttc5ou5mgvl5" path="res://entities/room_handlers/maintenance_tunnel_cntrlr.gd" id="1_s6xwg"]
+[ext_resource type="AudioStream" uid="uid://dercoifp6scug" path="res://resources/sounds/button_flip_t2.ogg" id="2_i3j4r"]
+[ext_resource type="Script" uid="uid://1etlspfaju0e" path="res://entities/room_handlers/maintenance_room_trigger.gd" id="3_6rpq7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31mqe"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpkuo"]
+transparency = 1
+albedo_color = Color(1, 0, 1, 0.156863)
+
+[sub_resource type="BoxMesh" id="BoxMesh_58dq8"]
+material = SubResource("StandardMaterial3D_vpkuo")
+
+[node name="breaker_trigger" type="Node3D" groups=["switch_type_a"]]
+script = ExtResource("1_s6xwg")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_31mqe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+mesh = SubResource("BoxMesh_58dq8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_i3j4r")
+
+[node name="room_trigger" type="Node3D" parent="." groups=["switch_type_a"]]
+script = ExtResource("3_6rpq7")
+
+[node name="Area3D" type="Area3D" parent="room_trigger"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_trigger/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_31mqe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="room_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+mesh = SubResource("BoxMesh_58dq8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="room_trigger"]
+stream = ExtResource("2_i3j4r")

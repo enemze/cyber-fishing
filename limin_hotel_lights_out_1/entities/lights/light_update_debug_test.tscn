@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://132wo30mdacm"]
+
+[ext_resource type="Script" uid="uid://djqju1ahisfg7" path="res://entities/lights/light_update_debug_test.gd" id="1_4pgh2"]
+
+[node name="LightUpdateDebugTest" type="Node3D" groups=["room_update"]]
+script = ExtResource("1_4pgh2")

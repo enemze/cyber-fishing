@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://7pqgj7foh76b"]
+
+[ext_resource type="Texture2D" uid="uid://64wpe0awrmp" path="res://resources/misc_textures/rain_Drop.png" id="1_5eiya"]
+
+[sub_resource type="Curve" id="Curve_xqjuv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.51099, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j1vxx"]
+curve = SubResource("Curve_xqjuv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ye3ce"]
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+alpha_curve = SubResource("CurveTexture_j1vxx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6v6sv"]
+shading_mode = 0
+albedo_color = Color(0.737193, 0.737193, 0.737193, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ogobh"]
+material = SubResource("StandardMaterial3D_6v6sv")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_8amvw"]
+offsets = PackedFloat32Array(0, 0.426332, 0.561128, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5eiya"]
+gradient = SubResource("Gradient_8amvw")
+
+[sub_resource type="Curve" id="Curve_s4uo6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.68675, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o0vb4"]
+curve = SubResource("Curve_s4uo6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8amvw"]
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 1, 0.5)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_o0vb4")
+color_ramp = SubResource("GradientTexture1D_5eiya")
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 0.01
+turbulence_noise_speed_random = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8amvw"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_5eiya")
+metallic_specular = 0.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_5eiya"]
+material = SubResource("StandardMaterial3D_8amvw")
+size = Vector2(0.2, 0.2)
+
+[node name="LightDust1" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+visible = false
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 30.0
+fixed_fps = 10
+visibility_aabb = AABB(-8, -8, -8, 16, 16, 16)
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_ye3ce")
+draw_pass_1 = SubResource("QuadMesh_ogobh")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+amount = 20
+lifetime = 30.0
+preprocess = 10.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_8amvw")
+draw_pass_1 = SubResource("QuadMesh_5eiya")

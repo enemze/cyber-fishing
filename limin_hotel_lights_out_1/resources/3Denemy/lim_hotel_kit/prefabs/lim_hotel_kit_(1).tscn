@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtkjq058et6kk"]
+
+[ext_resource type="PackedScene" uid="uid://b8vaiqgf7xsca" path="res://resources/3Denemy/lim_hotel_kit/lim_hotel_kit (1).glb" id="1_tgigo"]
+
+[node name="lim_hotel_kit (1)" instance=ExtResource("1_tgigo")]

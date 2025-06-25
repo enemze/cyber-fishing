@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://jhttc08c7b1b"]
+
+[ext_resource type="Script" uid="uid://det55ki1w3dgl" path="res://entities/colliders/collider_block_type_a.gd" id="1_g1dxe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38jlr"]
+transparency = 1
+albedo_color = Color(1, 0.184314, 0.733333, 0.745098)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3r5o"]
+material = SubResource("StandardMaterial3D_38jlr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_76s0x"]
+
+[node name="ColliderBlockTypeA" type="Node3D"]
+script = ExtResource("1_g1dxe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o3r5o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_76s0x")
