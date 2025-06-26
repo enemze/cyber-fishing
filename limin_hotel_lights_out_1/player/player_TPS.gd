@@ -16,8 +16,6 @@ var consecWallJumps = 0;
 
 @onready var p_collider = $CollisionShape3D
 @onready var default_height
-@onready var head_bonk = $head_bonk
-@onready var timer_shake = $Timer
 @onready var interact_text : RichTextLabel = $HUD/CanvasLayer/Control/interact_text
 @onready var interact_cast : RayCast3D = $Head/interact_cast
 @onready var interact_cooldown : Timer = $HUD/interact_cooldown
@@ -29,7 +27,6 @@ var in_bad_stuff : bool = false
 #audio
 @onready var step_audio_detection : RayCast3D = $step_audio_detect
 @onready var stp_audio_player = $footsteps
-@onready var audio_s_player = $AudioStreamPlayer
 @onready var bad_stuff_audio : AudioStreamPlayer = $audio_players/bad_stuff_noise
 var bad_stuff_vol : float = 0.0
 var play_IBS_audio : bool = false
