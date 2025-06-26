@@ -59,17 +59,17 @@ vec4 boxmap( in sampler2D s, in vec3 p, in vec3 n, in float k )
 void sky() {
 	// Ray direction
 	vec3 rd = EYEDIR;
-	
+
 	// Apply scaling
 	vec3 p = rd;
 	p = normalize(rd / scale) * scale;
 	vec3 n = normalize(p / scale);
-	
+
 	// Triplanar mapping of sky texture
 	COLOR = boxmap(sky_tex, p, n, triplanar_blend_power).rgb;
 	COLOR = energy * pow(COLOR, vec3(gamma));
 	COLOR *= textureLod(tint_ramp, SKY_COORDS.yx, 0.0).rgb;
-	
+
 	// Alpha of tint ramp determines transparency of sky texture
 	COLOR = mix(textureLod(tint_ramp, SKY_COORDS.yx, 0.0).rgb, COLOR, textureLod(tint_ramp, SKY_COORDS.yx, 0.0).a);
 }
