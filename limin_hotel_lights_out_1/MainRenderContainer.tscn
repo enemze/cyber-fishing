@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://cy3h76ldjx2s2" path="res://retro_pp_dragon1freak.gdshader" id="1_yl64c"]
 [ext_resource type="Script" uid="uid://84xij5kdx48f" path="res://main_render_container.gd" id="2_b4qxy"]
+[ext_resource type="PackedScene" uid="uid://xee0kmjmuhry" path="res://levels/main_1.tscn" id="4_ceeob"]
 [ext_resource type="PackedScene" uid="uid://bwnoxsr8gim04" path="res://hud/text_entry_a.tscn" id="4_keut2"]
-[ext_resource type="PackedScene" uid="uid://cd13gmvccjsem" path="res://levels/fishing/fishing.tscn" id="5_3nfs2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_plq2y"]
 shader = ExtResource("1_yl64c")
@@ -34,4 +34,4 @@ audio_listener_enable_3d = true
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
-[node name="FISHING" parent="SubViewport" instance=ExtResource("5_3nfs2")]
+[node name="world" parent="SubViewport" instance=ExtResource("4_ceeob")]
