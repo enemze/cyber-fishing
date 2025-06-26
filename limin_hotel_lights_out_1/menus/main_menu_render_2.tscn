@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://d05ev1ld40jjx"]
+[gd_scene load_steps=120 format=4 uid="uid://d05ev1ld40jjx"]
 
 [ext_resource type="Script" uid="uid://dpvmepnao4gbw" path="res://menus/main_menu_render_2.gd" id="1_7aulr"]
 [ext_resource type="PackedScene" uid="uid://lofbf0tul5nq" path="res://resources/3Denemy/lim_hotel_kit/prefabs/wall_blank_1.tscn" id="2_kqj23"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://c4skwnv2nmes7" path="res://resources/gothic_bedroom/gothic_bedroom_lamp_CandleStick_Bake1_PBR_Diffuse.png" id="24_btnkm"]
 [ext_resource type="PackedScene" uid="uid://jhttc08c7b1b" path="res://entities/colliders/collider_block_type_a.tscn" id="25_6f7sl"]
 [ext_resource type="Environment" uid="uid://d37ptq51st1bi" path="res://environs/main_menu_environment.tres" id="26_hwym4"]
-[ext_resource type="PackedScene" uid="uid://o3vibfu51fqh" path="res://prefabs/props/CoT_TV_1.tscn" id="27_bc6yp"]
 [ext_resource type="PackedScene" uid="uid://7pqgj7foh76b" path="res://prefabs/light_dust_1.tscn" id="28_6t3bd"]
 [ext_resource type="Texture2D" uid="uid://dweeghtrhdr1j" path="res://resources/retrohorror_textures/Carpet/Carpet_0/2/T_Carpet_0_4_BaseColor.png" id="29_hp201"]
 [ext_resource type="PackedScene" uid="uid://dypp53wnu3vq4" path="res://entities/wall_door_full_1.tscn" id="30_oxih0"]
@@ -1694,12 +1693,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 visible = false
 directional_shadow_mode = 0
 
-[node name="CoT_TV" parent="." instance=ExtResource("27_bc6yp")]
-transform = Transform3D(-0.94549, 0, -0.325651, 0, 1, 0, 0.325651, 0, -0.94549, 1, 1.61049, 1.05696)
-visible = false
-
 [node name="LightDust1" parent="." instance=ExtResource("28_6t3bd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64022, 3.16713, -0.834926)
+visible = false
 
 [node name="whiteboxing 2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
