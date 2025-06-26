@@ -144,6 +144,7 @@ func _resize_UI() -> void:
 	var scale_y = viewportHeight / blink_anim.get_sprite_frames().get_frame_texture("default",0).get_size().y
 	blink_anim.set_position(Vector2(viewportWidth*0.5, viewportHeight*0.5))
 	blink_anim.set_scale(Vector2(scale_x, scale_y))
+	world.tag_UI_resize = true
 	
 func _click_drag_slider() -> void:
 	slider_target.trigger = true #keeps screen on even when moving off of it 

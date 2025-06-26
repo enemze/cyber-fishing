@@ -47,6 +47,7 @@ signal sig_fade_clear
 
 var blink_fade_timer : float = 0.0
 var blink_state : bool = false
+var tag_UI_resize : bool = true
 
 var on_off_check : Array = []
 var on_off_previous : int = 0
@@ -377,6 +378,10 @@ func _process(delta):
 	_auto_spook(delta)
 	
 	_static_vis(delta)
+	
+	if tag_UI_resize :
+		_resize_UI()
+		tag_UI_resize = false
 	
 	if opening_sequence > 0 :
 		match opening_sequence :
