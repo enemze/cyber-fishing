@@ -154,12 +154,12 @@ signal player_died
 var static_vis_active : float = 0.0
 @export var drifter_noise : NoiseTexture2D 
 
-@onready var pipe_spook_vis : Array = [
-	$"../whiteboxing/props/pipes",
-	$"../whiteboxing2/props/pipes",
-	$"../whiteboxing3/props/pipes",
-	$"../whiteboxing4/props/pipes"
-]
+#@onready var pipe_spook_vis : Array = [
+	#$"../whiteboxing/props/pipes",
+	#$"../whiteboxing2/props/pipes",
+	#$"../whiteboxing3/props/pipes",
+	#$"../whiteboxing4/props/pipes"
+#]
 
 var pause_mode : bool = false
 var pause_rotation_save : Vector3 = Vector3.ZERO
@@ -253,9 +253,6 @@ func _ready():
 	$entities/hall_mannequin_special.global_position.y = -200.0
 	
 	drifter_static.modulate.a = 0.0
-	
-	for n in pipe_spook_vis.size() :
-		pipe_spook_vis[n].visible = false
 		
 	#--------------------------------------------------------------
 	#save & load stuff 
@@ -907,11 +904,12 @@ func _notes_spook_type() -> void:
 			note_spook.dialogue_string = note_dialogue[note_target_int]
 	
 func _pipes_spook_type() -> void:
+	pass
 	#also do a look angle check to make sure thye're facing AWAY from the center of the map
-	if player_location != 0:
-		if !is_facing_center:
-			for n in pipe_spook_vis.size() :
-				pipe_spook_vis[n].visible = !pipe_spook_vis[n].visible
+	#if player_location != 0:
+		#if !is_facing_center:
+			#for n in pipe_spook_vis.size() :
+				#pipe_spook_vis[n].visible = !pipe_spook_vis[n].visible
 
 	
 	
