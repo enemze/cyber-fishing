@@ -2262,9 +2262,27 @@ omni_range = 10.699
 omni_attenuation = 1.506
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="THE POD"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0738, 2.37133, 7.66608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0738, 2.37133, 21.8317)
 light_color = Color(0.408374, 0.996134, 0.981215, 1)
-light_energy = 7.631
+light_energy = 2.708
+light_indirect_energy = 0.797
+light_specular = 0.0
+omni_range = 10.699
+omni_attenuation = 1.506
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="THE POD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0738, 2.37133, 14.0587)
+light_color = Color(0.408374, 0.996134, 0.981215, 1)
+light_energy = 2.708
+light_indirect_energy = 0.797
+light_specular = 0.0
+omni_range = 10.699
+omni_attenuation = 1.506
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="THE POD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0738, 2.37133, 5.7455)
+light_color = Color(0.408374, 0.996134, 0.981215, 1)
+light_energy = 2.708
 light_indirect_energy = 0.797
 light_specular = 0.0
 omni_range = 10.699
