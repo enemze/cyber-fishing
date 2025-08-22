@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbfgtpnoq53k1"
-path.s3tc="res://.godot/imported/Mat_Stone_Black_02-128x128.png-2631a9520a84c7cb16221538b9b79360.s3tc.ctex"
+uid="uid://r01pn8olqyrj"
+path.s3tc="res://.godot/imported/pagan symbol4.png-188342c0661f113c0cd8e2a67e29d69a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/TEXTURES/sbs_base/Base Materials 128x128/Stone/Mat_Stone_Black_02-128x128.png"
-dest_files=["res://.godot/imported/Mat_Stone_Black_02-128x128.png-2631a9520a84c7cb16221538b9b79360.s3tc.ctex"]
+source_file="res://resources/3Denemy/pagan symbol4.png"
+dest_files=["res://.godot/imported/pagan symbol4.png-188342c0661f113c0cd8e2a67e29d69a.s3tc.ctex"]
 
 [params]
 

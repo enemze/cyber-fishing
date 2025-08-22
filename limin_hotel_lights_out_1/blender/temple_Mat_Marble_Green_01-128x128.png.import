@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbfgtpnoq53k1"
-path.s3tc="res://.godot/imported/Mat_Stone_Black_02-128x128.png-2631a9520a84c7cb16221538b9b79360.s3tc.ctex"
+uid="uid://bu5rgoax0mrg"
+path.s3tc="res://.godot/imported/temple_Mat_Marble_Green_01-128x128.png-9b9769c692591a2502d7365e56da5f69.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "7956142bb25f807aae4393d7e6abb325"
+}
 
 [deps]
 
-source_file="res://resources/TEXTURES/sbs_base/Base Materials 128x128/Stone/Mat_Stone_Black_02-128x128.png"
-dest_files=["res://.godot/imported/Mat_Stone_Black_02-128x128.png-2631a9520a84c7cb16221538b9b79360.s3tc.ctex"]
+source_file="res://blender/temple_Mat_Marble_Green_01-128x128.png"
+dest_files=["res://.godot/imported/temple_Mat_Marble_Green_01-128x128.png-9b9769c692591a2502d7365e56da5f69.s3tc.ctex"]
 
 [params]
 

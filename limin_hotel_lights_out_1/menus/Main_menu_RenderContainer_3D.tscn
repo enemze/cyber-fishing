@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://dpbs0wxilpynp"]
+[gd_scene load_steps=86 format=4 uid="uid://dpbs0wxilpynp"]
 
 [ext_resource type="Shader" uid="uid://cy3h76ldjx2s2" path="res://retro_pp_dragon1freak.gdshader" id="1_60prk"]
 [ext_resource type="PackedScene" uid="uid://d05ev1ld40jjx" path="res://menus/main_menu_render_2.tscn" id="2_46p7i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://1kdil3kqyef0" path="res://menus/TV_3D_button_1.gd" id="4_g1pvi"]
 [ext_resource type="Texture2D" uid="uid://cvkxkks8l5lhf" path="res://resources/3Denemy/televisions/TV1_TV-Diffuse.png" id="4_wybfx"]
 [ext_resource type="AudioStream" uid="uid://iw684piu2r3e" path="res://resources/sounds/freesound/655438__krokulator__select3.wav" id="5_36rlu"]
+[ext_resource type="Texture2D" uid="uid://258bjpad7rne" path="res://resources/misc_textures/black screen.png" id="5_581wn"]
 [ext_resource type="Texture2D" uid="uid://bmpka8pq77d0p" path="res://resources/3Denemy/televisions/TV2_TV-Diffuse.png" id="5_g1pvi"]
 [ext_resource type="FontFile" uid="uid://cg1oskev2vyob" path="res://resources/fonts/Lovelt__.ttf" id="6_60prk"]
 [ext_resource type="Texture2D" uid="uid://pnklcmufin68" path="res://resources/3Denemy/televisions/TV3_TV-Diffuse.png" id="6_xqeon"]
@@ -40,30 +41,6 @@ shader_parameter/to_gradient = SubResource("GradientTexture1D_2r5i8")
 atlas = ExtResource("10_581wn")
 region = Rect2(0, 0, 596, 336)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfg3j"]
-atlas = ExtResource("10_581wn")
-region = Rect2(596, 0, 596, 336)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbve2"]
-atlas = ExtResource("10_581wn")
-region = Rect2(1192, 0, 596, 336)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q0ppk"]
-atlas = ExtResource("10_581wn")
-region = Rect2(1788, 0, 596, 336)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ycfo3"]
-atlas = ExtResource("10_581wn")
-region = Rect2(2384, 0, 596, 336)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jyrjo"]
-atlas = ExtResource("10_581wn")
-region = Rect2(2980, 0, 596, 336)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vo1ve"]
-atlas = ExtResource("10_581wn")
-region = Rect2(3576, 0, 596, 336)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtnmq"]
 atlas = ExtResource("10_581wn")
 region = Rect2(4172, 0, 596, 336)
@@ -78,22 +55,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_dvsfh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sfg3j")
+"texture": SubResource("AtlasTexture_dvsfh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pbve2")
+"texture": SubResource("AtlasTexture_dvsfh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q0ppk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ycfo3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jyrjo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vo1ve")
+"texture": SubResource("AtlasTexture_dvsfh")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gtnmq")
@@ -101,6 +69,14 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_581wn")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqeon"]

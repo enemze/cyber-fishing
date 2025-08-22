@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbfgtpnoq53k1"
-path.s3tc="res://.godot/imported/Mat_Stone_Black_02-128x128.png-2631a9520a84c7cb16221538b9b79360.s3tc.ctex"
+uid="uid://dvqsklqkdko7x"
+path.s3tc="res://.godot/imported/walls + roof + collum_Mat_Marble_Green_01-128x128.png-52cbab9c3201abd90d857cda32ea8f47.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "7956142bb25f807aae4393d7e6abb325"
+}
 
 [deps]
 
-source_file="res://resources/TEXTURES/sbs_base/Base Materials 128x128/Stone/Mat_Stone_Black_02-128x128.png"
-dest_files=["res://.godot/imported/Mat_Stone_Black_02-128x128.png-2631a9520a84c7cb16221538b9b79360.s3tc.ctex"]
+source_file="res://resources/3Denemy/walls + roof + collum_Mat_Marble_Green_01-128x128.png"
+dest_files=["res://.godot/imported/walls + roof + collum_Mat_Marble_Green_01-128x128.png-52cbab9c3201abd90d857cda32ea8f47.s3tc.ctex"]
 
 [params]
 
