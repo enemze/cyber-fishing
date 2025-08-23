@@ -105,6 +105,12 @@ var key_array = [false,false,false,false,false] #probably need to make this a sa
 
 var viewport_shader
 
+var tool_active : int = 0
+var prev_tool_active : int = 0
+enum tool {UV_light,sound_caster,temp_blaster}
+var tool_max : int = 2
+var tool_visuals : Array = []
+
 func _ready():
 	#$"/root/global".register_player(self)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #captures mouse inside the screenspace
@@ -117,6 +123,14 @@ func _ready():
 	crouch_height = default_height*0.6
 	head_default = head.position.y
 	process_mode = Node.PROCESS_MODE_ALWAYS;
+	
+	tool_visuals = [
+		$Head/Camera3D/tool_UV,
+		$Head/Camera3D/tool_UV2,
+		$Head/Camera3D/tool_UV3
+		]
+	
+	tool_visuals[tool_active].animator.play_backwards("swap")
 		
 func _process(delta):
 
@@ -343,6 +357,14 @@ func _input(event):
 	if Input.is_action_just_pressed("escape"):
 		#get_tree().quit()
 		pass
+		
+#----------------------------------------------------------------------------------------
+#swap_weapons
+#----------------------------------------------------------------------------------------
+	if Input.is_action_just_pressed("swap_tool_Q"):
+		tool_active += 1
+		if tool_active > tool_max :
+			tool_active = 0
 	
 func angle_to_angle(from, to): #for radians
 	return fposmod(to-from + PI, PI*2) - PI	
@@ -356,6 +378,9 @@ func _physics_process(delta):
 #----------------------------------------------------------------------------------------
 #jump reset
 #----------------------------------------------------------------------------------------
+	equip_tool()
+	
+
 	if is_on_floor():
 		frame_check += 1
 		jump_token = 1;
@@ -496,3 +521,27 @@ func _physics_process(delta):
 	#camera.h_offset = 0.0
 	#camera.v_offset = 0.0
 	#cam_shake = false
+	
+func equip_tool() -> void:
+	if tool_active != prev_tool_active :
+		if !tool_visuals[prev_tool_active].animator.is_playing():
+			if !tool_visuals[tool_active].animator.is_playing():
+				tool_visuals[prev_tool_active].animator.play("swap")
+				$Head/Camera3D/tool_UV/Node3D/SpotLight3D.visible = false #turn this into a function later
+		
+func raise_tool() -> void:
+	if tool_active != prev_tool_active :
+		tool_visuals[tool_active].animator.play_backwards("swap")
+	
+func lower_tool() -> void: 
+	if tool_active != prev_tool_active :
+		if !tool_visuals[prev_tool_active].animator.is_playing():
+			if !tool_visuals[tool_active].animator.is_playing():
+				prev_tool_active = tool_active
+				match tool_active :
+					0 :
+						$Head/Camera3D/tool_UV/Node3D/SpotLight3D.visible = true #turn this into a function later
+					1 :
+						pass
+					2 :
+						pass

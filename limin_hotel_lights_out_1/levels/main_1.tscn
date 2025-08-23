@@ -1,4 +1,4 @@
-[gd_scene load_steps=1019 format=4 uid="uid://xee0kmjmuhry"]
+[gd_scene load_steps=1021 format=4 uid="uid://xee0kmjmuhry"]
 
 [ext_resource type="PackedScene" uid="uid://iwpa0igr8k3e" path="res://hud/loading_screen.tscn" id="1_hqfa0"]
 [ext_resource type="Script" uid="uid://d4e7uuiqwosns" path="res://levels/main_1.gd" id="1_y877q"]
@@ -158,6 +158,7 @@
 [ext_resource type="PackedScene" uid="uid://dodxj6dat4k0l" path="res://resources/3Denemy/amebas/simple_ameba-purple.tscn" id="151_rx2ji"]
 [ext_resource type="Texture2D" uid="uid://bjft11v6pg3ei" path="res://resources/3Denemy/elevator-window_glass_BaseColor.png" id="152_8bjk8"]
 [ext_resource type="PackedScene" uid="uid://6iopxapyhm4d" path="res://resources/3Denemy/amebas/simple_ameba.tscn" id="152_rx2ji"]
+[ext_resource type="Shader" uid="uid://dvycfa0wn1ap3" path="res://shaders/UV_ghost_shader_3D.gdshader" id="159_hu1j8"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_klhfy"]
 
@@ -12077,12 +12078,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lx4si")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h6obj"]
+render_priority = 0
+shader = ExtResource("159_hu1j8")
+shader_parameter/color = Color(0, 1, 1, 1)
+shader_parameter/energy = 1.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_b8i6l"]
 
 [node name="world" type="Node3D"]
 
 [node name="debug_light" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, -6.92321)
+visible = false
 directional_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -22811,6 +22819,7 @@ transform = Transform3D(8.95335e-08, 0, 0.682764, 0, 0.682764, 0, -0.682764, 0, 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="UV_test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, 21)
 layers = 2
+material_override = SubResource("ShaderMaterial_h6obj")
 cast_shadow = 0
 mesh = SubResource("BoxMesh_b8i6l")
 
