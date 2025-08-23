@@ -1,4 +1,4 @@
-[gd_scene load_steps=1021 format=4 uid="uid://xee0kmjmuhry"]
+[gd_scene load_steps=1024 format=4 uid="uid://xee0kmjmuhry"]
 
 [ext_resource type="PackedScene" uid="uid://iwpa0igr8k3e" path="res://hud/loading_screen.tscn" id="1_hqfa0"]
 [ext_resource type="Script" uid="uid://d4e7uuiqwosns" path="res://levels/main_1.gd" id="1_y877q"]
@@ -159,6 +159,7 @@
 [ext_resource type="Texture2D" uid="uid://bjft11v6pg3ei" path="res://resources/3Denemy/elevator-window_glass_BaseColor.png" id="152_8bjk8"]
 [ext_resource type="PackedScene" uid="uid://6iopxapyhm4d" path="res://resources/3Denemy/amebas/simple_ameba.tscn" id="152_rx2ji"]
 [ext_resource type="Shader" uid="uid://dvycfa0wn1ap3" path="res://shaders/UV_ghost_shader_3D.gdshader" id="159_hu1j8"]
+[ext_resource type="Shader" uid="uid://fo6fn48g8tgg" path="res://shaders/UV_ghost_shader_2D.gdshader" id="160_h6obj"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_klhfy"]
 
@@ -12086,6 +12087,15 @@ shader_parameter/energy = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_b8i6l"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i756g"]
+render_priority = 0
+shader = ExtResource("160_h6obj")
+shader_parameter/tex = ExtResource("42_m0g5g")
+shader_parameter/color = Color(0, 1, 1, 1)
+shader_parameter/energy = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_v4pbh"]
+
 [node name="world" type="Node3D"]
 
 [node name="debug_light" type="DirectionalLight3D" parent="."]
@@ -22822,6 +22832,12 @@ layers = 2
 material_override = SubResource("ShaderMaterial_h6obj")
 cast_shadow = 0
 mesh = SubResource("BoxMesh_b8i6l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UV_test"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 1, -19.7839, 2.08192, 18.0769)
+layers = 2
+material_override = SubResource("ShaderMaterial_i756g")
+mesh = SubResource("QuadMesh_v4pbh")
 
 [connection signal="timeout" from="main/main_handler/load_timer" to="main" method="_on_load_timer_timeout"]
 [connection signal="timeout" from="main/main_handler/update_timer" to="main" method="_on_update_timer_timeout"]
