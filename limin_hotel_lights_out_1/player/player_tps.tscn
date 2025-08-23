@@ -1,14 +1,81 @@
-[gd_scene load_steps=21 format=3 uid="uid://d1kw2mj4yem4r"]
+[gd_scene load_steps=28 format=3 uid="uid://d1kw2mj4yem4r"]
 
 [ext_resource type="Script" uid="uid://ct82g7t8pakfh" path="res://player/player_TPS.gd" id="1_q0arx"]
 [ext_resource type="AudioStream" uid="uid://b4qjh6v36ldc2" path="res://resources/sounds/freesound/38872__swuing__footstep-carpet.wav" id="2_2xlby"]
 [ext_resource type="AudioStream" uid="uid://bttcro2bo0tfh" path="res://resources/sounds/bad_stuff_feedback_1.ogg" id="2_6yxdw"]
+[ext_resource type="Script" uid="uid://dekpr7rcojv6y" path="res://player/tool_generic.gd" id="2_j84yu"]
 [ext_resource type="Texture2D" uid="uid://cborqslv0ubl3" path="res://resources/misc_textures/d_shadow_1.png" id="3_l17dr"]
 [ext_resource type="Texture2D" uid="uid://dusknypvsy7t7" path="res://resources/misc_textures/test_character_1-Sheet.png" id="5_icelm"]
 [ext_resource type="Texture2D" uid="uid://64wpe0awrmp" path="res://resources/misc_textures/rain_Drop.png" id="6_1w4ci"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x6jku"]
 radius = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1w4ci"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="Animation" id="Animation_q0iec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d8i1f"]
+resource_name = "swap"
+length = 0.25
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.24),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"lower_tool"
+}, {
+"args": [],
+"method": &"raise_tool"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lki2k"]
+_data = {
+&"RESET": SubResource("Animation_q0iec"),
+&"swap": SubResource("Animation_d8i1f")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j84yu"]
+albedo_color = Color(0, 0.0784314, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8i1f"]
+albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_flttd"]
 length = 0.25
@@ -162,6 +229,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 far = 140.0
+
+[node name="tool_UV" type="Node3D" parent="Head/Camera3D"]
+script = ExtResource("2_j84yu")
+
+[node name="Node3D" type="Node3D" parent="Head/Camera3D/tool_UV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D/tool_UV/Node3D"]
+light_cull_mask = 4293918722
+spot_angle = 15.1942
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/tool_UV/Node3D"]
+transform = Transform3D(0.983638, -0.180159, -7.87499e-09, -1.15982e-15, -4.37114e-08, 1, -0.180159, -0.983638, -4.29962e-08, 0.320837, -0.352656, -0.688569)
+mesh = SubResource("CylinderMesh_1w4ci")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/tool_UV"]
+libraries = {
+&"": SubResource("AnimationLibrary_lki2k")
+}
+
+[node name="tool_UV2" type="Node3D" parent="Head/Camera3D"]
+script = ExtResource("2_j84yu")
+
+[node name="Node3D" type="Node3D" parent="Head/Camera3D/tool_UV2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/tool_UV2/Node3D"]
+transform = Transform3D(0.983638, -0.180159, -7.87499e-09, -1.15982e-15, -4.37114e-08, 1, -0.180159, -0.983638, -4.29962e-08, 0.320837, -0.352656, -0.688569)
+mesh = SubResource("CylinderMesh_1w4ci")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_j84yu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/tool_UV2"]
+libraries = {
+&"": SubResource("AnimationLibrary_lki2k")
+}
+
+[node name="tool_UV3" type="Node3D" parent="Head/Camera3D"]
+script = ExtResource("2_j84yu")
+
+[node name="Node3D" type="Node3D" parent="Head/Camera3D/tool_UV3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/tool_UV3/Node3D"]
+transform = Transform3D(0.983638, -0.180159, -7.87499e-09, -1.15982e-15, -4.37114e-08, 1, -0.180159, -0.983638, -4.29962e-08, 0.320837, -0.352656, -0.688569)
+mesh = SubResource("CylinderMesh_1w4ci")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_d8i1f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/tool_UV3"]
+libraries = {
+&"": SubResource("AnimationLibrary_lki2k")
+}
 
 [node name="audio_players" type="Node3D" parent="."]
 
