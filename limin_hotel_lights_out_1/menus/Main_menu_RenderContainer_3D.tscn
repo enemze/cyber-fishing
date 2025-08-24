@@ -917,6 +917,22 @@ position = Vector2(643, 362)
 scale = Vector2(2.1745, 2.17857)
 sprite_frames = SubResource("SpriteFrames_g1pvi")
 
+[node name="fader_rect" type="ColorRect" parent="Container/SubViewport/screenspace_projection menu/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.125
+anchor_top = -1.975
+anchor_right = 10.025
+anchor_bottom = 6.025
+offset_left = -22.0
+offset_top = -31.0
+offset_right = 64.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="switch_flip" type="AudioStreamPlayer" parent="Container/SubViewport/screenspace_projection menu"]
 stream = ExtResource("5_36rlu")
 
