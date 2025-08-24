@@ -532,6 +532,7 @@ func equip_tool() -> void:
 func raise_tool() -> void:
 	if tool_active != prev_tool_active :
 		tool_visuals[tool_active].animator.play_backwards("swap")
+		#tool_visuals[tool_active].get_node("AnimationPlayer").play_backwards("swap")
 	
 func lower_tool() -> void: 
 	if tool_active != prev_tool_active :
