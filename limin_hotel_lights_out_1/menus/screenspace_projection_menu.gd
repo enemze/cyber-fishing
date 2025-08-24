@@ -9,7 +9,7 @@ extends Node3D
 @onready var blink_anim : AnimatedSprite2D = $Control/blink_sprite
 @onready var cam_main_pos : Node3D = $main_menu_cam_position
 @onready var cam_optn_pos : Node3D = $option_menu_cam_position
-@onready var world_environ : Environment = $"../MainMenuRender2/WorldEnvironment".environment
+@onready var world_environ : Environment = $"../WorldEnvironment".environment
 @onready var vision_fader : ColorRect = $Control/fader_rect
 
 var state = 0
@@ -31,6 +31,7 @@ var credits_state : int = 0
 var draw_credits_value : float = 3.0
 var draw_credits : float = draw_credits_value
 
+var target_text : Label3D 
 
 var save_data : Dictionary = {
 	"version" : version,
@@ -70,7 +71,7 @@ func _ready():
 	camera.global_position = cam_main_pos.global_position
 	camera.rotation = cam_main_pos.rotation
 	
-	world_environ = $"../MainMenuRender2/WorldEnvironment".environment
+	world_environ = $"../WorldEnvironment".environment
 	
 	collider_array = [
 		$StaticBody3D3,
@@ -271,7 +272,7 @@ func _click_drag_slider() -> void:
 	
 	var _value = clamp(new_pos,0.0,1.0)
 	
-	$StaticBody3D4/Label3D.text = "Volume\n" + str(floor(_value*100.0))
+	target.text = "Volume\n" + str(floor(_value*100.0))
 	
 	AudioServer.set_bus_volume_db(_bus_index,linear_to_db(_value))
 		
@@ -282,7 +283,7 @@ func _click_drag_slider() -> void:
 		
 func brightness_slider() -> void:
 	slider_target.trigger = true #keeps screen on even when moving off of it 
-	var _environ : Environment = $"../MainMenuRender2/WorldEnvironment".environment
+	var _environ : Environment = $"../WorldEnvironment".environment
 	
 	if click_drag_start_position == Vector2.ZERO :
 		click_drag_start_position = get_viewport().get_mouse_position()	
@@ -293,7 +294,7 @@ func brightness_slider() -> void:
 	
 	var _value = clamp(new_pos,0.0,2.0)
 	
-	$StaticBody3D8/Label3D.text = "Bright\nNess\n" + str(floor(_value*100.0))
+	target_text.text = "Bright\nNess\n" + str(floor(_value*100.0))
 	
 	_environ.adjustment_brightness = _value
 	
@@ -308,15 +309,15 @@ func _click_hold_reset(delta) -> void:
 	if  Input.is_action_pressed("shoot") :
 		hold_fill -= 1.0*delta
 		hold_fill = clamp(hold_fill,0.0,5.0)
-		$StaticBody3D5/Label3D.text = str(ceil(hold_fill))
+		target_text.text = str(ceil(hold_fill))
 		if hold_fill == 0.0 :
 			slider_target.audio_played_tag = false
 			state = 0
 			_clear_save()
 			hold_fill = 5.0
-			$StaticBody3D5/Label3D.text = "clear\nsave"
+			target_text.text = "clear\nsave"
 	else :
-		$StaticBody3D5/Label3D.text = "clear\nsave"
+		target_text.text = "clear\nsave"
 		hold_fill = 5.0
 		state = 0
 
@@ -411,6 +412,7 @@ func projection_button_get() -> void:
 						if state != 7:
 							if state != 8 :
 								collider_array[n].trigger = true
+								target_text = collider_array[n].my_text
 								_toggle = collider_array[n].state
 								if _toggle == 6 :
 									slider_target = collider_array[n]
@@ -418,7 +420,6 @@ func projection_button_get() -> void:
 									slider_target = collider_array[n]
 								if _toggle == 8 :
 									slider_target = collider_array[n]
-				
 		button_selected = _toggle
 	
 		

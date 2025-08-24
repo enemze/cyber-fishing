@@ -16,6 +16,7 @@ extends StaticBody3D
 @onready var scrn_text : Label3D = $Label3D
 @onready var select_noise : AudioStreamPlayer = $monitor_hum_on
 
+
 var trigger : bool = false
 var text_pos : Vector2
 
@@ -23,12 +24,18 @@ var time_passed : float = 0.1
 
 var color_target : int = 0
 var audio_played_tag : bool = false
+var my_text : Label3D
 
 func _ready():
 	select_noise.set_volume_linear(0.5)
 	text_pos.x = scrn_text.position.x
 	text_pos.y = scrn_text.position.y
 	
+	var _childs = get_children()
+	for n in _childs.size():
+		if _childs[n].get_class() == "Label3D" :
+			my_text = _childs[n]
+
 func _process(delta: float) -> void:
 	if trigger :
 		if !audio_played_tag :
