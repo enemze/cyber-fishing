@@ -6,11 +6,12 @@ extends Node3D
 @export var aim_ray : RayCast3D
 @export var cam_optn_pos : Node3D
 @export var brightness_environment : WorldEnvironment
+@export var fader : ColorRect
+@export var background_render : Node3D 
 
 @onready var mesh : MeshInstance3D = $StaticBody3D/MeshInstance3D
 @onready var target : StaticBody3D = $StaticBody3D
-@onready var blink_anim : AnimatedSprite2D = $Control/blink_sprite
-@onready var cam_main_pos : Node3D = $main_menu_cam_position
+#@onready var blink_anim : AnimatedSprite2D = $Control/blink_sprite
 
 
 var state = 0
@@ -32,7 +33,13 @@ var pause_rotation_save : Vector3 = Vector3.ZERO
 var target_text : Label3D 
 
 func _ready():
-	
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	$"../pause_indicator".visible = false
+	$".".visible = false
+	if background_render != null : 
+		background_render.visible = false
+	#fader.fade_state.connect()
+	fader.sig_fade_clear.connect(faded_to_black)
 	#blink_anim.visible = true
 	#_resize_UI()
 	#blink_anim.set_frame_and_progress(0,0.0)
@@ -53,6 +60,9 @@ func _ready():
 		]
 	
 func _process(delta: float) -> void:
+	
+	if Input.is_action_pressed("escape") :
+		state = 8
 		
 	match state :
 		0 : #base neutral state
@@ -72,6 +82,8 @@ func _process(delta: float) -> void:
 			_click_drag_slider()
 		7: #brightness slider
 			brightness_slider()
+		8 : # swapping between main & options 
+			_swap_to_pause_menu()
 	
 	if active :
 		projection_button_get()
@@ -84,9 +96,10 @@ func _process(delta: float) -> void:
 					state = button_selected
 			
 func _start_game() -> void:
-	#$"../MainMenuRender2".visible = true
+	
 	$".".visible = true
-	#if blink_anim.frame == 0.0 :
+	if background_render != null : 
+		background_render.visible = true
 	print("done swapping to pause")
 	state = 0
 	pause_rotation_save.z = player.camera.rotation.z
@@ -99,6 +112,7 @@ func _start_game() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	active = true
 	swapping = false
+	get_tree().paused = true
 	#blink_anim.play()
 	#else :
 		#swapping = true
@@ -106,11 +120,10 @@ func _start_game() -> void:
 			#blink_anim.play_backwards()
 			
 func _quit_game() -> void:
-	#if blink_anim.frame == 0.0 :
+	fader.fade_active(2.0)
+	if fader.fader_alpha >= 1.0 :
 		get_tree().quit()
-	#else :
-		#if !blink_anim.is_playing() :
-			#blink_anim.play_backwards()
+
 			
 func _goto_options() -> void:
 	#if blink_anim.frame == 0.0 :
@@ -124,6 +137,7 @@ func _goto_options() -> void:
 
 func _goto_main() -> void:
 	#if blink_anim.frame == 0.0 :
+		get_tree().paused = false
 		print("done swapping to main")
 		state = 0
 		active = false
@@ -134,9 +148,10 @@ func _goto_main() -> void:
 		player.look_lock = false
 		player.move_lock = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		#blink_anim.play()
 		swapping = false
-		#$"../MainMenuRender2".visible = false
+		if background_render != null : 
+			background_render.visible = true
+		
 		$".".visible = false
 	#else :
 		#swapping = true
@@ -146,9 +161,9 @@ func _goto_main() -> void:
 func _fullscreen_toggle() -> void :
 	var _win = DisplayServer.window_get_mode(0)
 	if _win == 0 :
-		DisplayServer.window_set_mode(4,0)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN,0)
 	else :
-		DisplayServer.window_set_mode(0,0)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED,0)
 	_resize_UI()
 			
 func _resize_UI() -> void:
@@ -204,6 +219,19 @@ func brightness_slider() -> void:
 		click_drag_start_position = Vector2.ZERO
 		world.save_data.brightness = _value
 		state = 0
+
+func _swap_to_pause_menu() :
+	if active :
+		fader.fade_active(0.25)
+		if fader.fader_alpha >= 1.0 :
+			state = 4
+	else : 
+		fader.fade_active(0.25)
+		if fader.fader_alpha >= 1.0 :
+			state = 1
+
+func faded_to_black() -> void : 
+	pass
 	
 func projection_button_get() -> void:
 		var _camera = get_viewport().get_camera_3d()

@@ -1,17 +1,21 @@
-[gd_scene load_steps=180 format=4 uid="uid://cd13gmvccjsem"]
+[gd_scene load_steps=187 format=4 uid="uid://cd13gmvccjsem"]
 
 [ext_resource type="PackedScene" uid="uid://d1kw2mj4yem4r" path="res://player/player_tps.tscn" id="1_25syt"]
 [ext_resource type="Environment" uid="uid://d4jy1m4fc46um" path="res://environs/environ_foggy_no_light.tres" id="1_yy602"]
 [ext_resource type="Script" uid="uid://c68y6icd88yps" path="res://levels/fishing/main.gd" id="2_jffcv"]
 [ext_resource type="PackedScene" uid="uid://dc3q25550qe0u" path="res://prefabs/elevator_doors_1.tscn" id="2_yy602"]
 [ext_resource type="Texture2D" uid="uid://cn5bp8r7f8udx" path="res://resources/retrohorror_textures/Metal/Metal_4/2/T_Metal_4_2_BaseColor.png" id="3_uie75"]
+[ext_resource type="Script" uid="uid://c3fhproijkqq6" path="res://menus/ui_fader_controller.gd" id="4_06uqy"]
 [ext_resource type="Texture2D" uid="uid://cjd03s78dfi2n" path="res://resources/industrial/Industrial_exterior_v2_Pipes.png" id="5_gtgw0"]
+[ext_resource type="Script" uid="uid://bkbscsalt58nt" path="res://shaders/UV-ify_3D.gd" id="6_88ysr"]
 [ext_resource type="Script" uid="uid://ce74iqsmfk5eb" path="res://menus/ss_projection_pause.gd" id="6_r0tlt"]
 [ext_resource type="Texture2D" uid="uid://bq08682bdr3d" path="res://resources/3Denemy/goo canister_pump_BaseColor.png" id="6_sewrm"]
 [ext_resource type="Texture2D" uid="uid://djelkf6n03swr" path="res://resources/3Denemy/goo canister_pipe_BaseColor.png" id="7_84hut"]
 [ext_resource type="AudioStream" uid="uid://dercoifp6scug" path="res://resources/sounds/button_flip_t2.ogg" id="7_c3jse"]
 [ext_resource type="Script" uid="uid://1kdil3kqyef0" path="res://menus/TV_3D_button_1.gd" id="7_poqrp"]
+[ext_resource type="Texture2D" uid="uid://drjyffykn3nvh" path="res://resources/misc_textures/wall_shadow_1.png" id="7_pvjbx"]
 [ext_resource type="Shader" uid="uid://cmfvymigxjndq" path="res://resources/3Denemy/amebas/simple_ameba-purple.gdshader" id="8_c3jse"]
+[ext_resource type="Script" uid="uid://c8xvan8stoqt3" path="res://shaders/UV-ify_2D.gd" id="8_nrm55"]
 [ext_resource type="Texture2D" uid="uid://comuajx0ssj2b" path="res://resources/3Denemy/goo canister_plugs_BaseColor.png" id="8_xublr"]
 [ext_resource type="FontFile" uid="uid://bcqtqiqoh216r" path="res://resources/fonts/ADDECRG_.TTF" id="9_06uqy"]
 [ext_resource type="Texture2D" uid="uid://beeprn1gg01dp" path="res://resources/3Denemy/goo canister_PLUG2_BaseColor.png" id="9_dtmt6"]
@@ -2533,7 +2537,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m6y3i")
 
+[sub_resource type="BoxMesh" id="BoxMesh_jux7r"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_oqdgi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxurb"]
+transparency = 1
+albedo_texture = ExtResource("7_pvjbx")
+
 [node name="FISHING" type="Node3D"]
+process_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_yy602")
@@ -2541,6 +2554,7 @@ camera_attributes = SubResource("CameraAttributesPhysical_uie75")
 
 [node name="debug_light" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0433927, 0.999058, 0, -0.999058, -0.0433927, 0, 11, 0)
+visible = false
 light_energy = 10.6
 light_specular = 0.0
 
@@ -2552,6 +2566,30 @@ pause_menu = NodePath("pause_menu/ss_projection_pause")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.6555, 1.73702, 22.0125)
 world = NodePath("..")
 
+[node name="UI_elements" type="Control" parent="main"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="fader_rect" type="ColorRect" parent="main/UI_elements"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.125
+anchor_top = -1.975
+anchor_right = 10.025
+anchor_bottom = 6.025
+offset_left = -22.0
+offset_top = -31.0
+offset_right = 64.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_06uqy")
+fade_speed = 2.0
+
 [node name="entities" type="Node3D" parent="main"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.91515)
 
@@ -2560,6 +2598,13 @@ transform = Transform3D(-2.69832e-08, 0, -0.657874, 0, 0.986811, 0, 0.617303, 0,
 
 [node name="pause_menu" type="Node3D" parent="main"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 2, 22)
+
+[node name="pause_indicator" type="Label3D" parent="main/pause_menu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 1)
+billboard = 1
+text = "pause scene here 
+			V"
+font_size = 64
 
 [node name="camera_position" type="Node3D" parent="main/pause_menu"]
 transform = Transform3D(-0.508274, -0.216627, -0.833505, -0.0201874, 0.970578, -0.239942, 0.860959, -0.10513, -0.497693, -0.330795, -0.104943, -1.50236)
@@ -2572,12 +2617,14 @@ skeleton = NodePath("../..")
 [node name="MainMenuRender2" parent="main/pause_menu" instance=ExtResource("88_yu1eq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -2, 0)
 
-[node name="ss_projection_pause" type="Node3D" parent="main/pause_menu" node_paths=PackedStringArray("world", "player", "cam_optn_pos", "brightness_environment")]
+[node name="ss_projection_pause" type="Node3D" parent="main/pause_menu" node_paths=PackedStringArray("world", "player", "cam_optn_pos", "brightness_environment", "fader", "background_render")]
 script = ExtResource("6_r0tlt")
 world = NodePath("../..")
 player = NodePath("../../player_TPS")
 cam_optn_pos = NodePath("../camera_position")
 brightness_environment = NodePath("../../../WorldEnvironment")
+fader = NodePath("../../UI_elements/fader_rect")
+background_render = NodePath("../MainMenuRender2")
 
 [node name="switch_flip" type="AudioStreamPlayer" parent="main/pause_menu/ss_projection_pause"]
 stream = ExtResource("7_c3jse")
@@ -2636,6 +2683,7 @@ outline_size = 10
 [node name="OmniLight3D" type="OmniLight3D" parent="main/pause_menu/ss_projection_pause/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484968, 0, 0.506782)
 light_color = Color(0.295176, 0.495398, 1, 1)
+light_cull_mask = 4294967293
 
 [node name="Timer" type="Timer" parent="main/pause_menu/ss_projection_pause/StaticBody3D"]
 wait_time = 0.1
@@ -2698,6 +2746,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484968, 0, 0.506782)
 light_color = Color(1, 0, 0, 1)
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
+light_cull_mask = 4294967293
 
 [node name="Timer" type="Timer" parent="main/pause_menu/ss_projection_pause/StaticBody3D4"]
 wait_time = 0.1
@@ -2757,6 +2806,7 @@ outline_size = 0
 [node name="OmniLight3D" type="OmniLight3D" parent="main/pause_menu/ss_projection_pause/StaticBody3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484968, 0, 0.506782)
 light_color = Color(1, 0, 0, 1)
+light_cull_mask = 4294967293
 
 [node name="Timer" type="Timer" parent="main/pause_menu/ss_projection_pause/StaticBody3D5"]
 wait_time = 0.1
@@ -2768,7 +2818,7 @@ stream = ExtResource("10_88ysr")
 [node name="StaticBody3D6" type="StaticBody3D" parent="main/pause_menu/ss_projection_pause" node_paths=PackedStringArray("tv_screen_off", "tv_screen_on", "omni_light", "screen_mesh")]
 transform = Transform3D(-0.732281, 0, -0.681002, 0, 1, 0, 0.681002, 0, -0.732281, 1.91532, 0.0797901, 0.716671)
 script = ExtResource("7_poqrp")
-state = 4
+state = 8
 tv_screen_off = NodePath("TV32/TV1-Screen")
 tv_screen_on = NodePath("TV32/TV1-Screen2")
 mat = SubResource("StandardMaterial3D_u10xs")
@@ -2817,6 +2867,7 @@ outline_size = 0
 [node name="OmniLight3D" type="OmniLight3D" parent="main/pause_menu/ss_projection_pause/StaticBody3D6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484968, 0, 0.506782)
 light_color = Color(1, 0, 0, 1)
+light_cull_mask = 4294967293
 
 [node name="Timer" type="Timer" parent="main/pause_menu/ss_projection_pause/StaticBody3D6"]
 wait_time = 0.1
@@ -2880,6 +2931,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484968, 0, 0.506782)
 light_color = Color(1, 0, 0, 1)
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
+light_cull_mask = 4294967293
 
 [node name="Timer" type="Timer" parent="main/pause_menu/ss_projection_pause/StaticBody3D8"]
 wait_time = 0.1
@@ -2889,6 +2941,7 @@ autostart = true
 stream = ExtResource("10_88ysr")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="main/pause_menu/ss_projection_pause"]
+light_cull_mask = 4294967293
 
 [node name="THE POD" type="Node3D" parent="."]
 
@@ -2918,6 +2971,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0518, 3.10132, 21.9455)
 light_color = Color(0.29259, 0.203055, 1, 1)
 light_energy = 3.323
 light_indirect_energy = 0.797
+light_cull_mask = 4294967293
 omni_range = 3.646
 omni_attenuation = 1.506
 
@@ -2927,6 +2981,7 @@ light_color = Color(0.408374, 0.996134, 0.981215, 1)
 light_energy = 1.477
 light_indirect_energy = 0.797
 light_specular = 0.0
+light_cull_mask = 4294967293
 omni_range = 10.699
 omni_attenuation = 1.506
 
@@ -2936,6 +2991,7 @@ light_color = Color(0.408374, 0.996134, 0.981215, 1)
 light_energy = 1.477
 light_indirect_energy = 0.797
 light_specular = 0.0
+light_cull_mask = 4294967293
 omni_range = 10.699
 omni_attenuation = 1.506
 
@@ -2945,6 +3001,7 @@ light_color = Color(0.408374, 0.996134, 0.981215, 1)
 light_energy = 7.631
 light_indirect_energy = 0.797
 light_specular = 0.0
+light_cull_mask = 4294967293
 omni_range = 10.699
 omni_attenuation = 1.506
 
@@ -2953,6 +3010,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5047, 1.80245, 21.6353)
 light_color = Color(1.01075e-06, 0.460648, 0.463247, 1)
 light_energy = 4.033
 light_indirect_energy = 4.646
+light_cull_mask = 4294967293
 omni_attenuation = -0.013
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="THE POD"]
@@ -2960,12 +3018,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.4002, 2.18536, 20.6356)
 light_color = Color(0, 0.43, 0.172, 1)
 light_energy = 5.805
 light_indirect_energy = 3.127
+light_cull_mask = 4294967293
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="THE POD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.4863, 1.97934, 23.3869)
 light_color = Color(0, 0.43, 0.172, 1)
 light_energy = 5.805
 light_indirect_energy = 3.127
+light_cull_mask = 4294967293
 
 [node name="goo canister" type="Node3D" parent="THE POD"]
 transform = Transform3D(-0.18494, 0, -1.6168e-08, 0, 0.18494, 0, 1.6168e-08, 0, -0.18494, -28.3575, 2.37468, 20.6221)
@@ -3457,6 +3517,21 @@ transform = Transform3D(-0.851105, 0, 2.39677e-08, 0, 1, 0, -1.28513e-07, 0, -0.
 material_override = SubResource("StandardMaterial3D_r53o1")
 mesh = SubResource("ArrayMesh_xa5m1")
 skeleton = NodePath("")
+
+[node name="debug & testing" type="Node3D" parent="."]
+
+[node name="UV_test" type="MeshInstance3D" parent="debug & testing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7195, 1.52956, 21.7146)
+mesh = SubResource("BoxMesh_jux7r")
+skeleton = NodePath("../../main/entities")
+script = ExtResource("6_88ysr")
+
+[node name="UV_test_2D" type="MeshInstance3D" parent="debug & testing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8839, 2.69582, 20.356)
+mesh = SubResource("QuadMesh_oqdgi")
+skeleton = NodePath("../../main/entities")
+surface_material_override/0 = SubResource("StandardMaterial3D_sxurb")
+script = ExtResource("8_nrm55")
 
 [connection signal="timeout" from="main/pause_menu/ss_projection_pause/StaticBody3D/Timer" to="main/pause_menu/ss_projection_pause/StaticBody3D" method="_on_timer_timeout"]
 [connection signal="timeout" from="main/pause_menu/ss_projection_pause/StaticBody3D4/Timer" to="main/pause_menu/ss_projection_pause/StaticBody3D4" method="_on_timer_timeout"]
